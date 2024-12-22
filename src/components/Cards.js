@@ -6,22 +6,21 @@ const Cards = ({
   cloudinaryImageId,
   cuisines,
   areaName,
-  locality,
   avgRating,
-  slaString,
+  sla,
 }) => {
   return (
-    <div>
-      <div className="w-1/4 p-4">
-        <div className="bg-white shadow-md rounded-lg overflow-hidden">
+    <div className="flex flex-wrap">
+      <div className="p-4 flex-1 min-w-[300px] flex flex-col">
+        <div className="bg-white shadow-md rounded-lg overflow-hidden flex flex-col h-full">
           <img
-            className="w-full h-32 object-cover"
+            className="w-full h-[14rem] object-cover object-center"
             src={SWIGGY_IMAGE_API + cloudinaryImageId}
             alt="Image"
           />
-          <div className="p-6">
+          <div className="p-6 flex-1">
             <h2 className="text-gray-900 font-bold text-xl">{name}</h2>
-            <div className="flex space-x-2">
+            <div className="flex items-center space-x-2 mb-4">
               <svg
                 width="20"
                 height="20"
@@ -29,8 +28,8 @@ const Cards = ({
                 fill="none"
                 role="img"
                 aria-hidden="true"
-                strokeColor="rgba(2, 6, 12, 0.92)"
-                fillColor="rgba(2, 6, 12, 0.92)"
+                strokecolor="rgba(2, 6, 12, 0.92)"
+                fillcolor="rgba(2, 6, 12, 0.92)"
               >
                 <circle
                   cx="10"
@@ -51,15 +50,21 @@ const Cards = ({
                     y2="19"
                     gradientUnits="userSpaceOnUse"
                   >
-                    <stop stop-color="#21973B"></stop>
-                    <stop offset="1" stop-color="#128540"></stop>
+                    <stop stopColor="#21973B"></stop>
+                    <stop offset="1" stopColor="#128540"></stop>
                   </linearGradient>
                 </defs>
               </svg>
-              <p className="text-gray-700 text-base">{avgRating}</p>
-              <p className="text-gray-700 text-base">.</p>
-              <p className="text-gray-700 text-base">{slaString}</p>
+              <p className="text-black text-base font-semibold">{avgRating}</p>
+              <p className="text-black text-base font-semibold">
+                {sla.slaString}
+              </p>
+              <p className="text-black text-base font-semibold">.</p>
             </div>
+            <p className="text-gray-500 text-base font-semibold truncate w-64">
+              {cuisines.join(", ")}
+            </p>
+            <p className="text-gray-500 text-base font-semibold">{areaName}</p>
           </div>
         </div>
       </div>
